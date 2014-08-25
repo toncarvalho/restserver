@@ -12,6 +12,7 @@ import javax.ws.rs.core.Response;
 public class ServerStatusRest {
     @GET
     public Response status() {
+
         return Response.status(Response.Status.OK).build();
     }
 }
