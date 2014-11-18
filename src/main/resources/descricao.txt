@@ -1,0 +1,13 @@
+Será desenvolvida uma parte do sistema para utilização Desktop, nesta interface o usuário terá acesso à maioria dos serviços
+ disponibilizados pela aplicação, como por exemplo:
+ Cadastro de Disciplinas,
+Turma,
+Professor,
+Aluno,
+Lançamento de Aulas,
+Notas e Faltas,
+bem como retirar relatórios.
+
+Outra parte do sistema, mais resumida será desenvolvida para ser utilizada através da Web.
+A finalidade desta parte da aplicação facilitar o lançamento de aulas, notas, e faltas por parte dos professores.
+O professor poderá acessar a aplicação a partir de um dispositivo que tenha acesso a Internet e realizar os lançamentos.

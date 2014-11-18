@@ -1,5 +1,6 @@
 package restserver.model;
 
+import java.io.Serializable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,7 +15,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  * Classe  base que contem atributos padrão para todas as entidades que vierem a compor  o modelo
  */
 @MappedSuperclass
-public class ModelBase {
+public class ModelBase  implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
