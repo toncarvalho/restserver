@@ -1,10 +1,11 @@
 package restserver.helper;
 
+import restserver.model.ModelBase;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import restserver.model.ModelBase;
 
 /**
  * Classe de operações de CRUD para as entidades. Esta classe permite a realização simplificada das operações de criação, leitura, alteração
@@ -24,7 +25,6 @@ public class CRUDManager {
      * Executa uma inserção no banco de dados.
      *
      * @param entity Entidade com os valores a serem inseridos.
-     *
      * @return Id da entidade criada.
      */
     public <T extends ModelBase> Long save(T entity) {
@@ -37,7 +37,6 @@ public class CRUDManager {
      * Executa uma leitura do banco de dados.
      *
      * @param id Id da entidade a ser lida.
-     *
      * @return Entidade lida.
      */
     public <T extends ModelBase> T read(Class<T> clazz, Long id) {
@@ -62,13 +61,14 @@ public class CRUDManager {
                 em.flush();
             } else {
                 throw new IllegalArgumentException(String.format("Não existe registro de %s existente com id %d",
-                                                                 clazz.getSimpleName(), entity.getId()));
+                        clazz.getSimpleName(), entity.getId()));
             }
         } else {
             throw new IllegalArgumentException(String.format("Dados da entidade %s devem existir e incluir o valor de id",
-                                                             clazz.getSimpleName()));
+                    clazz.getSimpleName()));
         }
     }
+
 
     /**
      * Executa uma remoção de entidade do banco de dados.
@@ -80,4 +80,6 @@ public class CRUDManager {
         em.remove(entity);
         em.flush();
     }
+
+
 }
