@@ -1,5 +1,6 @@
 package restserver.helper;
 
+import restserver.model.Aluno;
 import restserver.model.ModelBase;
 
 import javax.ejb.LocalBean;
@@ -80,6 +81,7 @@ public class CRUDManager {
         em.remove(entity);
         em.flush();
     }
+
 
 
 }

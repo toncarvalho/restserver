@@ -1,4 +1,4 @@
-package restserver.helper;
+package restserver;
 
 import org.flywaydb.core.Flyway;
 import org.hibernate.cfg.Configuration;

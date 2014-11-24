@@ -1,0 +1,1 @@
+-- Este arquivo tem a finalidade de evitar que a pasta testdata/all seja acidentalmente apagada se estiver vazia.
