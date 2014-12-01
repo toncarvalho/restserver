@@ -1,4 +1,4 @@
-package restserver.business;
+package restserver;
 
 import org.flywaydb.core.Flyway;
 import org.hibernate.cfg.Configuration;
@@ -22,8 +22,8 @@ public class FlywayIntegratorTest implements Integrator {
         logger.info("Iniciando criação das tabelas.");
         final Flyway flyway = new Flyway();
         try {
-            flyway.setDataSource("jdbc:mysql://localhost:3306/restserverschema", "signum", "123");
-            flyway.setLocations("db.db.testdata.all.migration");
+            flyway.setDataSource("jdbc:mysql://localhost:3306/restserverschema_teste", "signum", "123");
+            flyway.setLocations("db.migration");
             flyway.clean();
             flyway.migrate();
         } catch (Exception e) {

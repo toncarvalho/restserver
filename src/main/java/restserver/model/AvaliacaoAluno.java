@@ -1,6 +1,10 @@
 package restserver.model;
 
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Store;
 import restserver.helper.ValidationMessage;
 
 import javax.persistence.Entity;
@@ -10,12 +14,15 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
+@Indexed
 public class AvaliacaoAluno extends ModelBase {
 
     @NotNull(message = ValidationMessage.NOT_NULL)
+    @Field(index = Index.YES, store = Store.YES)
     private Date dataAvaliacao;
 
     @NotNull(message = ValidationMessage.NOT_NULL)
+    @Field(index = Index.YES, store = Store.YES)
     @Size(min = 3, max = 100, message = ValidationMessage.SIZE)
     private String descricao;
 
@@ -23,6 +30,7 @@ public class AvaliacaoAluno extends ModelBase {
     private Aluno aluno;
 
     @NotNull(message = ValidationMessage.NOT_NULL)
+    @Field(index = Index.YES, store = Store.YES)
     private Double nota;
 
     @ManyToOne

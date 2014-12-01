@@ -7,6 +7,6 @@ CREATE TABLE `FrequenciaAluno` (
   PRIMARY KEY (`id`),
   KEY `FK_aluno_id` (`aluno_id`),
   KEY `FK_lancamentoDiario_id` (`lancamentoDiario_id`),
-  CONSTRAINT `FK_Aluno` FOREIGN KEY (`aluno_id`) REFERENCES `Aluno` (`id`),
-  CONSTRAINT `FK_LancamentoDiario` FOREIGN KEY (`lancamentoDiario_id`) REFERENCES `LancamentoDiario` (`id`)
+  CONSTRAINT `FK_Aluno_to_Frequencia` FOREIGN KEY (`aluno_id`) REFERENCES `Aluno` (`id`),
+  CONSTRAINT `FK_LancamentoDiario_toFrequencia` FOREIGN KEY (`lancamentoDiario_id`) REFERENCES `LancamentoDiario` (`id`)
 ) engine=InnoDB default charset=utf8;

@@ -1,8 +1,13 @@
 package restserver.model;
 
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Store;
 import restserver.helper.ValidationMessage;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -11,6 +16,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@Indexed
 public class DiarioDeClasse extends ModelBase {
 
     @NotNull(message = ValidationMessage.NOT_NULL)
@@ -26,13 +32,15 @@ public class DiarioDeClasse extends ModelBase {
     private Disciplina disciplina;
 
     @NotNull(message = ValidationMessage.NOT_NULL)
+    @Field(index = Index.YES, store = Store.YES)
     private Date inicioVigencia;
 
     @NotNull(message = ValidationMessage.NOT_NULL)
+    @Field(index = Index.YES, store = Store.YES)
     private Date finalVigencia;
 
 
-    @OneToMany(mappedBy = "diarioDeClasse")
+    @OneToMany(mappedBy = "diarioDeClasse", cascade = CascadeType.ALL)
     private List<LancamentoDiario> lancamentosDiario;
 
 

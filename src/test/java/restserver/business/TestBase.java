@@ -9,6 +9,7 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import restserver.FlywayIntegratorTest;
 
 /**
  * Classe responsável por criar o arquivo de teste e setar conexão com o banco para migrações do teste
@@ -54,23 +55,23 @@ public abstract class TestBase {
         return retorno;
     }
 
-    @BeforeClass
+  /*  @BeforeClass
     public static final void populateDBTestDataAll() {
         Flyway flyway = new Flyway();
-        flyway.setDataSource("jdbc:mysql://localhost:3306/restserverschema", "signum", "123");
-        flyway.setLocations("db.db.testdata.all.migration", "db.testdata.all");
+        flyway.setDataSource("jdbc:mysql://localhost:3306/restserverschema_teste", "signum", "123");
+        flyway.setLocations("db.testdata.all", "db.testdata.all");
         flyway.setOutOfOrder(true);
         flyway.migrate();
-    }
+    }*/
 
     @AfterClass
     public static final void clearDB() {
         Flyway flyway = new Flyway();
-        flyway.setDataSource("jdbc:mysql://localhost:3306/restserverschema", "signum", "123");
+        flyway.setDataSource("jdbc:mysql://localhost:3306/restserverschema_teste", "signum", "123");
         flyway.clean();
     }
 
-    public static void populateDB(String... testData) {
+    /*public static void populateDB(String... testData) {
         Flyway flyway = new Flyway();
         flyway.setDataSource("jdbc:mysql://localhost:3306/restserverschema", "signum", "123");
         String[] location = new String[testData.length + 2];
@@ -82,5 +83,5 @@ public abstract class TestBase {
         flyway.setLocations(location);
         flyway.setOutOfOrder(true);
         flyway.migrate();
-    }
+    }*/
 }

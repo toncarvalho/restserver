@@ -6,6 +6,6 @@ CREATE TABLE `FrequenciaDisciplinaTurma` (
   `horarioInicial` time NOT NULL,
   `disciplinasTurmaProfessor_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `FK_25rxffo2ndwa54o6twbg28uw1` (`disciplinasTurmaProfessor_id`),
-  CONSTRAINT `FK_25rxffo2ndwa54o6twbg28uw1` FOREIGN KEY (`disciplinasTurmaProfessor_id`) REFERENCES `DisciplinasTurmaProfessor` (`id`)
+  KEY `FK_disciplinasTurmaProfessor_id` (`disciplinasTurmaProfessor_id`),
+  CONSTRAINT `FK_disciplinasTurmaProfessor_id_to_FrequenciaDisciplinaTurma` FOREIGN KEY (`disciplinasTurmaProfessor_id`) REFERENCES `DisciplinasTurmaProfessor` (`id`)
 ) engine=InnoDB default charset=utf8;

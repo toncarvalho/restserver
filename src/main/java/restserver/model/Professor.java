@@ -1,5 +1,9 @@
 package restserver.model;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Store;
 import restserver.helper.ValidationMessage;
 
 import javax.persistence.Entity;
@@ -8,30 +12,37 @@ import javax.validation.constraints.Size;
 
 
 @Entity
+@Indexed
 public class Professor extends ModelBase {
 
     @NotNull(message = ValidationMessage.NOT_NULL)
     @Size(min = 3, max = 200, message = ValidationMessage.SIZE)
+    @Field(index = Index.YES, store = Store.YES)
     private String nome;
 
     @NotNull(message = ValidationMessage.NOT_NULL)
     @Size(min = 3, max = 30, message = ValidationMessage.SIZE)
+    @Field(index = Index.YES, store = Store.YES)
     private String numeroRegistro;
 
     @NotNull(message = ValidationMessage.NOT_NULL)
     @Size(min = 3, max = 100, message = ValidationMessage.SIZE)
+    @Field(index = Index.YES, store = Store.YES)
     private String email;
 
     @NotNull(message = ValidationMessage.NOT_NULL)
     @Size(min = 3, max = 20, message = ValidationMessage.SIZE)
+    @Field(index = Index.YES, store = Store.YES)
     private String foneComercial;
 
     @NotNull(message = ValidationMessage.NOT_NULL)
     @Size(min = 3, max = 20, message = ValidationMessage.SIZE)
+    @Field(index = Index.YES, store = Store.YES)
     private String foneCelular;
 
     @NotNull(message = ValidationMessage.NOT_NULL)
     @Size(min = 3, max = 200, message = ValidationMessage.SIZE)
+    @Field(index = Index.YES, store = Store.YES)
     private String sites;
 
     public String getNome() {

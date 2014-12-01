@@ -39,4 +39,13 @@ public class FrequenciaAluno extends ModelBase {
     public void setLancamentoDiario(LancamentoDiario lancamentoDiario) {
         this.lancamentoDiario = lancamentoDiario;
     }
+
+    public FrequenciaAluno() {
+    }
+
+    public FrequenciaAluno(Aluno aluno, Boolean presente, LancamentoDiario lancamentoDiario) {
+        this.aluno = aluno;
+        this.presente = presente;
+        this.lancamentoDiario = lancamentoDiario;
+    }
 }

@@ -1,6 +1,10 @@
 package restserver.model;
 
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Store;
 import restserver.helper.ValidationMessage;
 
 import javax.persistence.Entity;
@@ -8,26 +12,32 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
+@Indexed
 public class Aluno extends ModelBase {
 
     @NotNull(message = ValidationMessage.NOT_NULL)
     @Size(min = 3, max = 200, message = ValidationMessage.SIZE)
+    @Field(index = Index.YES, store = Store.YES)
     private String nome;
 
     @NotNull(message = ValidationMessage.NOT_NULL)
     @Size(min = 3, max = 50, message = ValidationMessage.SIZE)
+    @Field(index = Index.YES, store = Store.YES)
     private String registroAcademico;
 
     @NotNull(message = ValidationMessage.NOT_NULL)
     @Size(min = 3, max = 200, message = ValidationMessage.SIZE)
+    @Field(index = Index.YES, store = Store.YES)
     private String email;
 
     @NotNull(message = ValidationMessage.NOT_NULL)
     @Size(min = 3, max = 20, message = ValidationMessage.SIZE)
+    @Field(index = Index.YES, store = Store.YES)
     private String fone;
 
     @NotNull(message = ValidationMessage.NOT_NULL)
     @Size(min = 3, max = 20, message = ValidationMessage.SIZE)
+    @Field(index = Index.YES, store = Store.YES)
     private String foneComercial;
 
     public String getNome() {

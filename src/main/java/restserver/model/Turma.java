@@ -1,10 +1,12 @@
 package restserver.model;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Store;
 import restserver.helper.ValidationMessage;
 
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -12,26 +14,31 @@ import java.util.List;
 
 
 @Entity
+@Indexed
 public class Turma extends ModelBase {
 
     @NotNull(message = ValidationMessage.NOT_NULL)
-    @Size(min = 3, max = 200, message = ValidationMessage.SIZE)
+    @Size(min = 2, max = 200, message = ValidationMessage.SIZE)
+    @Field(index = Index.YES, store = Store.YES)
     private String periodoTurma;
 
     @NotNull(message = ValidationMessage.NOT_NULL)
+    @Field(index = Index.YES, store = Store.YES)
     private Date inicioAnoLetivo;
 
     @NotNull(message = ValidationMessage.NOT_NULL)
+    @Field(index = Index.YES, store = Store.YES)
     private Date finalAnoLetivo;
 
-    @NotNull(message = ValidationMessage.NOT_NULL)
+
+    @ManyToOne
     private Curso curso;
 
 
     @OneToMany
     private List<Aluno> alunos;
 
-    @OneToMany(mappedBy = "turma")
+    @OneToMany(mappedBy = "turma", cascade = CascadeType.ALL)
     private List<DisciplinasTurmaProfessor> disciplinasTurmaProfessorList ;
 
     @Enumerated
